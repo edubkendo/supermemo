@@ -1,9 +1,10 @@
 defmodule Supermemo do  
+  
   @default_ef 2.5
   @min_ef 1.3
   @first_interval 1
   @second_interval 6
-  @iteration_reset_boundary 3.0 / 5.0
+  @iteration_reset_boundary 0.4
   @repeat_boundary 4.0 / 5.0
 
   def rep(score) do
@@ -19,19 +20,10 @@ defmodule Supermemo do
   def rep(score, %Supermemo.Rep{
                    e_factor: ef,
                    interval: interval,
-                   iteration: iteration,
-                   repeat: repeat}) do
+                   iteration: iteration}) do
     new_interval = set_interval(score, iteration, interval, ef)
     new_ef = adjust_efactor_or_min(ef, score)
     _rep(score, new_ef, new_interval, iteration)
-  end
-
-  def rep(score, %Supermemo.Rep{
-                   e_factor: ef,
-                   interval: interval,
-                   iteration: iteration,
-                   repeat: false}) do
-    _rep(score, ef, interval, iteration)
   end
 
   defp _rep(score, ef, interval, iteration) do
@@ -40,7 +32,7 @@ defmodule Supermemo do
                   repeat: repeat?(score),
                   e_factor: ef,
                   interval: interval,
-                  iteration: find_iteration(score, iteration)
+                  iteration: find_iteration(score, iteration) + 1
               }
   end
 
@@ -64,7 +56,7 @@ defmodule Supermemo do
   def find_iteration(score, iteration) do
     cond do
       score < @iteration_reset_boundary -> 0
-                                      _ -> iteration
+      true -> iteration
     end
   end
 
@@ -76,7 +68,7 @@ defmodule Supermemo do
   def repeat?(score) do
     cond do
       score < @repeat_boundary -> true
-      _ -> false
+      true -> false
     end
   end
 
@@ -84,7 +76,7 @@ defmodule Supermemo do
     adjusted = adjust_efactor(ef, score)
     cond do
       adjusted < @min_ef -> @min_ef
-      _ -> adjusted
+      true -> adjusted
     end
   end
   
@@ -93,7 +85,7 @@ defmodule Supermemo do
     |> adjust_efactor_formula(ef)
   end
 
-  def adjust_efactor_formula(q, ef) do
+  defp adjust_efactor_formula(q, ef) do
     ef + (0.1 - (5.0 - q) * (0.08 + (5.0 - q) * 0.02))
   end
 end
