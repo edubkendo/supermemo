@@ -18,15 +18,31 @@ end
 ## Usage
 
 ```elixir
-score = 1
-rep = Supermemo.rep(score)
+# Initial rep
+
+    rep = Supermemo.rep(1)
+    # %Supermemo.Rep{due: %Timex.DateTime{calendar: :gregorian, day: 29, hour: 5,
+    #   minute: 45, month: 11, ms: 0, second: 18,
+    #   timezone: %Timex.TimezoneInfo{dst_abbreviation: "UTC", dst_end_day: :undef,
+    #    dst_end_time: {0, 0}, dst_name: "UTC", dst_start_day: :undef,
+    #    dst_start_time: {0, 0}, full_name: "UTC", gmt_offset_dst: 0,
+    #    gmt_offset_std: 0, standard_abbreviation: "UTC", standard_name: "UTC"},
+    #   year: 2014}, e_factor: 2.6, interval: 1, iteration: 1, repeat: false}
 
 # Do a rep with the card and get a new score.
-second_rep = Supermemo.rep(score, rep)
+    
+    rep = Supermemo.rep(1, rep)
+    # %Supermemo.Rep{due: %Timex.DateTime{calendar: :gregorian, day: 4, hour: 5,
+    #   minute: 45, month: 12, ms: 0, second: 23,
+    #   timezone: %Timex.TimezoneInfo{dst_abbreviation: "UTC", dst_end_day: :undef,
+    #    dst_end_time: {0, 0}, dst_name: "UTC", dst_start_day: :undef,
+    #    dst_start_time: {0, 0}, full_name: "UTC", gmt_offset_dst: 0,
+    #    gmt_offset_std: 0, standard_abbreviation: "UTC", standard_name: "UTC"},
+    #   year: 2014}, e_factor: 2.7, interval: 6, iteration: 2, repeat: false}
 
 # Another rep
 
-third_rep = Supermemo.rep(score, rep)
-...
+    third_rep = Supermemo.rep(0.8, rep)
+# ...
 ```
 

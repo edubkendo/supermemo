@@ -7,6 +7,9 @@ defmodule Supermemo do
   @iteration_reset_boundary 0.4
   @repeat_boundary 4.0 / 5.0
 
+  @doc """
+  Given a value between 0.0 and 1.0, returns an initial `%Supermemo.Rep{}`.
+  """
   def rep(score) do
     %Supermemo.Rep{
                     due: first_due_date,
@@ -17,6 +20,10 @@ defmodule Supermemo do
                   }
   end
 
+  @doc """
+  Given a score between 0.0 and 1.0, and a `%Supermemo.Rep{}` struct, returns
+  a new struct with updated `due` date, `interval`, `iteration` and `e_factor`.
+  """
   def rep(score, %Supermemo.Rep{
                    e_factor: ef,
                    interval: interval,
