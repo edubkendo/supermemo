@@ -26,7 +26,9 @@ defmodule Supermemo.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-        {:timex, "~> 0.13.0"}
+        {:timex, "~> 0.13.0"},
+        {:excheck, "~> 0.2.0", only: [:dev,:test]},
+        {:triq, github: "krestenkrab/triq", only: [:dev,:test]}
     ]
   end
 end

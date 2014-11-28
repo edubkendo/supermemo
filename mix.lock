@@ -1,1 +1,3 @@
-%{"timex": {:hex, :timex, "0.13.1"}}
+%{"excheck": {:hex, :excheck, "0.2.0"},
+  "timex": {:hex, :timex, "0.13.1"},
+  "triq": {:git, "git://github.com/krestenkrab/triq.git", "c56982322936ac60391c255fe6590734f64b6bdb", []}}
