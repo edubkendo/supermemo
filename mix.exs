@@ -33,6 +33,7 @@ defmodule Supermemo.Mixfile do
     [
         {:timex, "~> 0.13.0"},
         {:excheck, "~> 0.2.0", only: [:dev,:test]},
+        {:ex_doc, "~> 0.6", only: :dev},
         {:triq, github: "krestenkrab/triq", only: [:dev,:test]}
     ]
   end
