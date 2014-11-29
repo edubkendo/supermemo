@@ -40,4 +40,24 @@ defmodule SupermemoTest do
       adjusted == expected
     end
   end
+
+  property :efactor_with_efactor_and_zero_dot_eight do
+    for_all x in such_that(xx in int(130, 250) when xx < 250) do
+      ef = x / 100
+      q = 0.8
+      expected = ef + (0.1 - (5 - (q * 5)) * (0.08 + (5 - (q * 5)) * 0.02))
+      adjusted = Supermemo.adjust_efactor(ef, q)
+      adjusted == expected
+    end
+  end
+
+  property :efactor_with_efactor_and_zero_dot_four do
+    for_all x in such_that(xx in int(130, 250) when xx < 250) do
+      ef = x / 100
+      q = 0.4
+      expected = ef + (0.1 - (5 - (q * 5)) * (0.08 + (5 - (q * 5)) * 0.02))
+      adjusted = Supermemo.adjust_efactor(ef, q)
+      adjusted == expected
+    end
+  end
 end
