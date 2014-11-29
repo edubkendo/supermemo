@@ -5,12 +5,7 @@ defmodule Supermemo.Mixfile do
     [app: :supermemo,
      version: "1.0.0",
      elixir: "~> 1.0",
-     package: [
-             contributors: ["Eric West"],
-             licenses: ["MIT"],
-             links: %{github: "https://github.com/edubkendo/supermemo",
-                      docs: "http://hexdocs.pm/supermemo"}
-         ],
+     package: package,
      description: """
        An Elixir implementation of the Supermemo 2 Algorithm as described here:
        http://www.supermemo.com/english/ol/sm2.htm.
@@ -39,6 +34,15 @@ defmodule Supermemo.Mixfile do
         {:timex, "~> 0.13.0"},
         {:excheck, "~> 0.2.0", only: [:dev,:test]},
         {:triq, github: "krestenkrab/triq", only: [:dev,:test]}
+    ]
+  end
+
+  defp package do
+    [
+             contributors: ["Eric West"],
+             licenses: ["MIT"],
+             links: %{github: "https://github.com/edubkendo/supermemo",
+                      docs: "http://hexdocs.pm/supermemo"}
     ]
   end
 end
