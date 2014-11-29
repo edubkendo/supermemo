@@ -3,8 +3,18 @@ defmodule Supermemo.Mixfile do
 
   def project do
     [app: :supermemo,
-     version: "0.0.1",
+     version: "1.0.0",
      elixir: "~> 1.0",
+     package: [
+             contributors: ["Eric West"],
+             licenses: ["MIT"],
+             links: %{github: "https://github.com/edubkendo/supermemo",
+                      docs: "http://hexdocs.pm/supermemo"}
+         ],
+     description: """
+       An Elixir implementation of the Supermemo 2 Algorithm as described here:
+       http://www.supermemo.com/english/ol/sm2.htm.
+       """,
      deps: deps]
   end
 
