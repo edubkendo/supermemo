@@ -87,7 +87,7 @@ defmodule Supermemo do
     end
   end
   
-  defp adjust_efactor(ef, score) do
+  def adjust_efactor(ef, score) do
     score * 5
     |> adjust_efactor_formula(ef)
   end
