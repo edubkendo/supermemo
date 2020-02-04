@@ -44,8 +44,8 @@ defmodule Supermemo do
   end
 
   def due_date(interval) do
-    Timex.Date.universal
-      |> Timex.Date.shift(days: interval)
+    Timex.now()
+    |> Timex.shift(days: interval)
   end
 
   def set_interval(score, iteration, interval, ef) do
@@ -68,8 +68,8 @@ defmodule Supermemo do
   end
 
   def first_due_date do
-    Timex.Date.universal
-      |> Timex.Date.shift(days: @first_interval)
+    Timex.now()
+    |> Timex.shift(days: @first_interval)
   end
 
   def repeat?(score) do
