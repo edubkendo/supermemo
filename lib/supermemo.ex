@@ -1,5 +1,4 @@
-defmodule Supermemo do  
-  
+defmodule Supermemo do
   @default_ef 2.5
   @min_ef 1.3
   @first_interval 1
@@ -12,12 +11,12 @@ defmodule Supermemo do
   """
   def rep(score) do
     %Supermemo.Rep{
-                    due: first_due_date,
-                    repeat: repeat?(score),
-                    e_factor: adjust_efactor_or_min(@default_ef, score),
-                    interval: @first_interval,
-                    iteration: 1
-                  }
+      due: first_due_date(),
+      repeat: repeat?(score),
+      e_factor: adjust_efactor_or_min(@default_ef, score),
+      interval: @first_interval,
+      iteration: 1
+    }
   end
 
   @doc """
@@ -35,12 +34,12 @@ defmodule Supermemo do
 
   defp _rep(score, ef, interval, iteration) do
     %Supermemo.Rep{
-                  due: due_date(interval),
-                  repeat: repeat?(score),
-                  e_factor: ef,
-                  interval: interval,
-                  iteration: find_iteration(score, iteration) + 1
-              }
+      due: due_date(interval),
+      repeat: repeat?(score),
+      e_factor: ef,
+      interval: interval,
+      iteration: find_iteration(score, iteration) + 1
+    }
   end
 
   def due_date(interval) do
@@ -81,14 +80,15 @@ defmodule Supermemo do
 
   def adjust_efactor_or_min(ef, score) do
     adjusted = adjust_efactor(ef, score)
+
     cond do
       adjusted < @min_ef -> @min_ef
       true -> adjusted
     end
   end
-  
+
   def adjust_efactor(ef, score) do
-    score * 5
+    (score * 5)
     |> adjust_efactor_formula(ef)
   end
 
