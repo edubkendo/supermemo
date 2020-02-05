@@ -11,7 +11,7 @@ defmodule SupermemoTest do
   end
 
   property :interval do
-    for_all x in int do
+    for_all x in int() do
       implies x > 2 do
         prior = Supermemo.set_interval(1, x - 1, x - 1, 2.5)
         interval = Supermemo.set_interval(1, x, prior, 2.5)

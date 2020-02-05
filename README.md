@@ -11,7 +11,7 @@ Add Supermemo to your mix.exs:
 
 ```elixir
 def deps do
-  [ {:supermemo, "~> 0.0.1"} ]
+  [ {:supermemo, "~> 1.0.0"} ]
 end
 ```
 
