@@ -19,7 +19,7 @@ defmodule Supermemo.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger, :timex]]
+    [applications: [:logger]]
   end
 
   # Dependencies can be Hex packages:
@@ -33,7 +33,6 @@ defmodule Supermemo.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:timex, "~> 3.6.1"},
       {:excheck, "~> 0.6.0", only: [:dev, :test]},
       {:ex_doc, "~> 0.6", only: :dev},
       {:triq, "~> 1.3", only: [:dev, :test]}
