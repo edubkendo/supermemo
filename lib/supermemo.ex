@@ -43,8 +43,8 @@ defmodule Supermemo do
   end
 
   def due_date(interval) do
-    Timex.now()
-    |> Timex.shift(days: interval)
+    DateTime.utc_now()
+    |> DateTime.add(days_to_seconds(interval))
   end
 
   def set_interval(score, iteration, interval, ef) do
@@ -67,8 +67,8 @@ defmodule Supermemo do
   end
 
   def first_due_date do
-    Timex.now()
-    |> Timex.shift(days: @first_interval)
+    DateTime.utc_now()
+    |> DateTime.add(days_to_seconds(@first_interval))
   end
 
   def repeat?(score) do
@@ -94,5 +94,9 @@ defmodule Supermemo do
 
   defp adjust_efactor_formula(q, ef) do
     ef + (0.1 - (5.0 - q) * (0.08 + (5.0 - q) * 0.02))
+  end
+
+  defp days_to_seconds(days) do
+    days * 60 * 60 * 24
   end
 end
